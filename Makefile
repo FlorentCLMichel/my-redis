@@ -4,11 +4,17 @@ release:
 debug: 
 	cargo build --offline
 
-run_debug: debug
-	./target/debug/my-redis
+server_debug: debug
+	./target/debug/server
 
-run_release: release
-	./target/release/my-redis
+client_debug: debug
+	./target/debug/client
+
+server_release: release
+	./target/debug/server
+
+client_release: release
+	./target/debug/client
 
 run_debug_example: 
 	cargo run --offline --example ${example_name}
