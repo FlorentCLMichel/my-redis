@@ -10,6 +10,12 @@ run_debug: debug
 run_release: release
 	./target/release/my-redis
 
+run_debug_example: 
+	cargo run --offline --example ${example_name}
+
+run_release_example: 
+	cargo run --offline --release --example ${example_name}
+
 clean: 
 	trash target; \
 	trash Cargo.lock
