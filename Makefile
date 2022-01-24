@@ -16,17 +16,17 @@ server_release: release
 client_release: release
 	./target/drelease/client
 
+bin: release
+	./target/release/${bin}
+
 bin_debug: debug
 	./target/debug/${bin}
 
-bin_release: release
-	./target/release/${bin}
+run_example: 
+	cargo run --offline --release --example ${example}
 
 run_debug_example: 
 	cargo run --offline --example ${example}
-
-run_release_example: 
-	cargo run --offline --release --example ${example}
 
 clean: 
 	trash target; \
