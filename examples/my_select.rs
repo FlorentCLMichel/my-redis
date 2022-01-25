@@ -36,8 +36,15 @@ async fn main() {
     let (tx1, rx1) = oneshot::channel();
     let (tx2, rx2) = oneshot::channel();
 
-    tx1.send("test1").unwrap();
-    tx2.send("test2").unwrap();
+    tokio::spawn( async move { 
+        std::thread::sleep(std::time::Duration::from_millis(1000));
+        let _ = tx1.send("test1");
+    });
+    
+    tokio::spawn( async move { 
+        std::thread::sleep(std::time::Duration::from_millis(100));
+        let _ = tx2.send("test2"); 
+    });
 
     MySelect { rx1, rx2 }.await;
 }
